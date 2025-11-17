@@ -10,3 +10,13 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+const sendToChatGPT = async (userMessage) => {
+  const res = await fetch("/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: userMessage }),
+  });
+  const data = await res.json();
+  console.log(data.reply);
+};
